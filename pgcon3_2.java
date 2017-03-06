@@ -1,4 +1,3 @@
-package procon.pgcon2;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -7,7 +6,6 @@ import java.util.Arrays;
 import java.util.Comparator;
 
 public class pgcon3_2 {
-
 
 	public static class Card {
 		private String card;
@@ -22,7 +20,6 @@ public class pgcon3_2 {
 		public void setRank(Long rank) { this.rank = rank; }
 	}
 
-
 	public static void main(String[] args) throws IOException{
 		BufferedReader read = new BufferedReader(new InputStreamReader(System.in));
 		String str = read.readLine();
@@ -34,7 +31,6 @@ public class pgcon3_2 {
 
 		for(int i=0; i<list.length; i++){
 
-
 			if (list[i].startsWith("0x")) {
 				check = check+1;
 				String str2 = list[i].substring(2, list[i].length());
@@ -44,7 +40,6 @@ public class pgcon3_2 {
 					binary = binary.substring(1);
 					rev = (long) (Integer.parseInt(binary,2) - 32768);
 				}
-
 			}else {
 				rev = Long.parseLong(list[i]);
 			}
@@ -57,7 +52,6 @@ public class pgcon3_2 {
 			}
 		});
 
-
 		for(int i=0; i<longlist.length; i++){
 				System.out.print(sortlist[i].getCard());
 			if(i==longlist.length-1){
@@ -66,5 +60,5 @@ public class pgcon3_2 {
 				System.out.print(" ");
 			}
 		}
-		}
+	}
 }
