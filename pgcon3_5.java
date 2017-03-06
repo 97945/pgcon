@@ -1,4 +1,3 @@
-package procon.pgcon5;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -65,7 +64,5 @@ public class pgcon3_5 {
 				}
 			}
 		}
-
 	}
 }
-
