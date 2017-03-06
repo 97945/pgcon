@@ -1,3 +1,4 @@
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -26,9 +27,9 @@ public class pgcon3_1 {
 
 		double double5 = Double.parseDouble(list[4]);
 		DecimalFormat format = new DecimalFormat("#.#");
-        format.setMinimumFractionDigits(3);
-        format.setMaximumFractionDigits(3);
-        BigDecimal number = new BigDecimal(double5);
+		format.setMinimumFractionDigits(3);
+		format.setMaximumFractionDigits(3);
+		BigDecimal number = new BigDecimal(double5);
 
 		String str5 = String.format("%9s",  format.format(number));
 		System.out.print(str5);
@@ -36,7 +37,3 @@ public class pgcon3_1 {
 
 		}
 }
-
-
-
-
