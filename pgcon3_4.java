@@ -1,6 +1,4 @@
 
-package procon.pgcon4;
-
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -29,7 +27,6 @@ public class pgcon3_4 {
 		for(int i=0; i<m; i++){
 			list2[i] = (String) list.get(i);
 		}
-
 
 		ArrayList<ArrayList<Integer>> match = new ArrayList<ArrayList<Integer>>();
 
@@ -78,8 +75,5 @@ public class pgcon3_4 {
 				}
 			}
 		}
-
-
-
 	}
 }
