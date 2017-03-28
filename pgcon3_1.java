@@ -1,9 +1,8 @@
+package procon.pgcon1;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.math.BigDecimal;
-import java.text.DecimalFormat;
 
 public class pgcon3_1 {
 
@@ -24,16 +23,22 @@ public class pgcon3_1 {
 
 		String str4 = String.format("%9s", list[3]);
 		System.out.print(str4+" ");
-
+/*
 		double double5 = Double.parseDouble(list[4]);
 		DecimalFormat format = new DecimalFormat("#.#");
-		format.setMinimumFractionDigits(3);
-		format.setMaximumFractionDigits(3);
-		BigDecimal number = new BigDecimal(double5);
+        format.setMinimumFractionDigits(3);
+        format.setMaximumFractionDigits(3);
+        BigDecimal number = new BigDecimal(double5);
 
 		String str5 = String.format("%9s",  format.format(number));
-		System.out.print(str5);
-		System.out.println();
+*/
+		double double5 = Double.parseDouble(list[4]);
+		String str5 = String.format("%9.3f", double5);
+		System.out.println(str5);
 
 		}
 }
+
+
+
+
