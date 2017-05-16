@@ -1,3 +1,4 @@
+package procon.pgcon3;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -20,21 +21,18 @@ public class pgcon3_3 {
 
 		Arrays.sort(list);
 
-		int[] list2 = new int[s];
-		String[] list3 = new String[m];
+		int[] order = new int[s];
 		for(int i=0; i<m; i++){
 			long x = n + i -1;
-
-		for(int j=0; j<s; j++){
-			list2[j] = (int)(x % len);
-			x = x / len;
-		}
-		list3[i] = "";
+			for(int j=0; j<s; j++){
+				order[j] = (int)(x % len);
+				x = x / len;
+			}
+		String answer = "";
 		for(int j=s-1; j>=0; j--){
-			list3[i] = list3[i] + list[list2[j]];
+			answer = answer + list[order[j]];
 		}
-
-		System.out.println(list3[i]);
+		System.out.println(answer);
 		}
 	}
 }
