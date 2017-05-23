@@ -1,4 +1,6 @@
 
+package procon.pgcon4;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -6,16 +8,18 @@ import java.util.ArrayList;
 
 public class pgcon3_4 {
 
+	static String[] target;
+
 	public static void main(String[] args) throws IOException {
 		BufferedReader input =new BufferedReader (new InputStreamReader (System.in));
-		String str1 = input.readLine( );
-		int n = Integer.parseInt(str1);
-		String[] list1 = new String[n];
+		String strN = input.readLine( );
+		int n = Integer.parseInt(strN);
+		target = new String[n];
 		for(int i=0; i<n; i++){
-			list1[i] = input.readLine( );
+			target[i] = input.readLine( );
 		}
-		String str2 = input.readLine( );
-		int m = Integer.parseInt(str2);
+		String strM = input.readLine( );
+		int m = Integer.parseInt(strM);
 		ArrayList list = new ArrayList();
 		while(input.ready()){
 			list.add(input.readLine());
@@ -23,55 +27,58 @@ public class pgcon3_4 {
 		while(list.size()<m){
 			list.add("");
 		}
-		String[] list2 = new String[m];
+		String[] searchWord = new String[m];
 		for(int i=0; i<m; i++){
-			list2[i] = (String) list.get(i);
+			searchWord[i] = (String) list.get(i);
+			search(searchWord[i]);
 		}
 
-		ArrayList<ArrayList<Integer>> match = new ArrayList<ArrayList<Integer>>();
 
-		for(int i=0; i<m; i++){
-			ArrayList<Integer> matchnumber = new ArrayList<Integer>();
-			if(list2[i].startsWith("%") && list2[i].endsWith("%")){
-				String str = list2[i].substring(1, list2[i].length()-1);
-				for(int j=0; j<n; j++){
-					if(list1[j].indexOf(str) != -1){
-						matchnumber.add(j+1);
-					}
-				}
-			}else if(list2[i].startsWith("%")){
-				for(int j=0; j<n; j++){
-					if(list1[j].endsWith(list2[i].substring(1))){
-						matchnumber.add(j+1);
-					}
-				}
-			}else if(list2[i].endsWith("%")){
-				for(int j=0; j<n; j++){
-					if(list1[j].startsWith(list2[i].substring(0, list2[i].length()-1))){
-						matchnumber.add(j+1);
-					}
-				}
-			}else{
-				for(int j=0; j<n; j++){
-					if(list1[j].equals(list2[i])){
-						matchnumber.add(j+1);
-					}
+
+
+	}
+
+	public static void search(String searchWord){
+		String word = "";
+		ArrayList<Integer> answer = new ArrayList<Integer>();
+		if(searchWord.startsWith("%") && searchWord.endsWith("%")){
+			word = searchWord.substring(1, searchWord.length()-1);
+			for(int i=0; i<target.length; i++){
+				if(target[i].indexOf(word) != -1){
+					answer.add(i+1);
 				}
 			}
-			match.add(matchnumber);
+		}else if(searchWord.startsWith("%")){
+			word = searchWord.substring(1);
+			for(int i=0; i<target.length; i++){
+				if(target[i].endsWith(word)){
+					answer.add(i+1);
+				}
+			}
+		}else if(searchWord.endsWith("%")){
+			word = searchWord.substring(0, searchWord.length()-1);
+			for(int i=0; i<target.length; i++){
+				if(target[i].startsWith(word)){
+					answer.add(i+1);
+				}
+			}
+		}else{
+			word = searchWord;
+			for(int i=0; i<target.length; i++){
+				if(target[i].equals(word)){
+					answer.add(i+1);
+				}
+			}
 		}
-
-		for(int i=0; i<m; i++){
-			if(match.get(i).size()==0){
-				System.out.println("Not match");
-			}else{
-				for(int j=0; j<match.get(i).size(); j++){
-					System.out.print(match.get(i).get(j));
-					if(j==match.get(i).size()-1){
-						System.out.println();
-					}else{
-						System.out.print(" ");
-					}
+		if(answer.size() == 0){
+			System.out.println("Not match");
+		}else{
+			for(int i=0; i<answer.size(); i++){
+				System.out.print(answer.get(i));
+				if(i == answer.size()-1){
+					System.out.println();
+				}else{
+					System.out.print(" ");
 				}
 			}
 		}
